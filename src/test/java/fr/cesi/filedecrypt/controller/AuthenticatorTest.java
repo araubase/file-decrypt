@@ -8,5 +8,7 @@ public class AuthenticatorTest {
 
     @Test
     public void login() {
+        Authenticator auth = new Authenticator();
+        assertEquals(true, auth.login("", ""));
     }
 }
