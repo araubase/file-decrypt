@@ -1,8 +1,6 @@
 package fr.cesi.filedecrypt.view;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class FilePanel extends JPanel{
 
@@ -10,19 +8,29 @@ public class FilePanel extends JPanel{
 
     private JPanel jp = new JPanel();
 
+    private FileFrame frame;
+
     private JLabel fileText;
     private JButton chooseButton;
+    private JButton destinationButton;
     private JButton submitButton;
 
-    public FilePanel() {
+    private String source;
+    private String destination;
+
+    public FilePanel(FileFrame frame) {
+        this.frame = frame;
         fileText = new JLabel("Aucun fichier.");
-        chooseButton = new JButton(new OpenFileAction("Choisir un fichier"));
-        submitButton = new JButton("Valider");
+        chooseButton = new JButton(new OpenFileAction("Choisir un fichier", JFileChooser.FILES_ONLY, this));
+        destinationButton = new JButton(new OpenFileAction("Choisir une destination", JFileChooser.DIRECTORIES_ONLY, this));
+        submitButton = new JButton("Décrypter");
+        submitButton.addActionListener(new DecryptSubmitAction(this));
     }
 
     public JPanel buildContentPanel() {
         this.getJP().add(fileText);
         this.getJP().add(chooseButton);
+        this.getJP().add(destinationButton);
         this.getJP().add(submitButton);
 
         return this.getJP();
@@ -34,5 +42,25 @@ public class FilePanel extends JPanel{
 
     public void setJP(JPanel jp) {
         this.jp = jp;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public FileFrame getFrame() {
+        return frame;
     }
 }

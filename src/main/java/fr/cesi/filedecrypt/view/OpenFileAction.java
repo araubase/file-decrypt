@@ -7,24 +7,27 @@ import javax.swing.JFileChooser;
 
 public class OpenFileAction extends AbstractAction {
 
-    public OpenFileAction(String text) {
+    private int mode;
+    private FilePanel panel;
+
+    public OpenFileAction(String text, int mode, FilePanel panel) {
         super(text);
+        this.panel = panel;
+        this.mode = mode;
     }
 
     public void actionPerformed(ActionEvent e) {
-        /*
-         * Research the file which must be decrypt.
-         */
-
-        // Using this process to invoke the contructor,
-        // JFileChooser points to user's default directory
         JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(this.mode);
 
-        // Open the save dialog
         j.showSaveDialog(null);
         File f = j.getSelectedFile();
 
-        System.out.println(f.getAbsolutePath());
+        if (mode == JFileChooser.FILES_ONLY) {
+            panel.setSource(f.getAbsolutePath());
+        } else if (mode == JFileChooser.DIRECTORIES_ONLY) {
+            panel.setDestination(f.getAbsolutePath());
+        }
     }
 
 }

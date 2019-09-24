@@ -1,6 +1,9 @@
 package fr.cesi.filedecrypt.view;
 
+import fr.cesi.filedecrypt.controller.Decryptor;
+import fr.cesi.filedecrypt.interfaces.IController;
 import fr.cesi.filedecrypt.interfaces.IView;
+import fr.cesi.filedecrypt.model.Decrypt;
 
 import java.awt.FlowLayout;
 import java.util.*;
@@ -12,10 +15,12 @@ public class FileFrame extends JFrame implements IView {
     private static final long serialVersionUID = 1L;
 
     private FilePanel filePanel;
+    private IController controller;
 
-    public FileFrame() {
+    public FileFrame(IController controller) {
         super();
-        filePanel = new FilePanel();
+        this.controller = controller;
+        filePanel = new FilePanel(this);
         this.buildFrame();
     }
 
@@ -38,6 +43,10 @@ public class FileFrame extends JFrame implements IView {
 
     public void setFilePanel(FilePanel filePanel) {
         this.filePanel = filePanel;
+    }
+
+    public Decryptor getController() {
+        return (Decryptor) controller;
     }
 }
 

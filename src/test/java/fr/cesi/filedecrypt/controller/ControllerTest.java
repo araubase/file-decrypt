@@ -22,7 +22,7 @@ public class ControllerTest {
 
     @Test
     public void setView() {
-        IView view = new FileFrame();
+        IView view = new FileFrame(new Decryptor());
 
         Controller controller = new Controller(null, null);
         controller.setView(view);
@@ -37,7 +37,7 @@ public class ControllerTest {
 
     @Test
     public void getView() {
-        IView view = new FileFrame();
+        IView view = new FileFrame(new Decryptor());
 
         Controller controller = new Controller(null, view);
 
