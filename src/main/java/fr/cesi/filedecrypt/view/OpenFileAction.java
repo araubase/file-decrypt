@@ -23,6 +23,8 @@ public class OpenFileAction extends AbstractAction {
         // Open the save dialog
         j.showSaveDialog(null);
         File f = j.getSelectedFile();
+
+        System.out.println(f.getAbsolutePath());
     }
 
 }

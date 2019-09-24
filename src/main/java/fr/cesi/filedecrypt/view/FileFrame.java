@@ -1,11 +1,13 @@
 package fr.cesi.filedecrypt.view;
 
+import fr.cesi.filedecrypt.interfaces.IView;
+
 import java.awt.FlowLayout;
 import java.util.*;
 
 import javax.swing.JFrame;
 
-public class FileFrame extends JFrame {
+public class FileFrame extends JFrame implements IView {
 
     private static final long serialVersionUID = 1L;
 
