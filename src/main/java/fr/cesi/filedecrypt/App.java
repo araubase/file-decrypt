@@ -16,7 +16,7 @@ public class App {
      * @param args
      */
     public static void main( String[] args ) {
-        IView frame = new FileFrame();
+        IView frame = new AuthFrame();
         IController controller = new Controller(null, frame);
         controller.start();
     }
