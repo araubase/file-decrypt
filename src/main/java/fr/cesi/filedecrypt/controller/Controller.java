@@ -1,9 +1,10 @@
 package fr.cesi.filedecrypt.controller;
 
+import fr.cesi.filedecrypt.interfaces.IController;
 import fr.cesi.filedecrypt.interfaces.IModel;
 import fr.cesi.filedecrypt.interfaces.IView;
 
-public class Controller {
+public class Controller implements IController {
 
     private IModel model;
     private IView view;
@@ -29,8 +30,8 @@ public class Controller {
         return this.view;
     }
 
-    public int start() {
-        return 1;
+    @Override
+    public boolean start() {
+        return true;
     }
-
 }
