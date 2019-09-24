@@ -10,8 +10,10 @@ public class DecryptTest {
     public void decrypt() {
         Decrypt decrypt = new Decrypt();
         String result = "test";
-        String key = "clé";
+        String key = "clef";
         String s = decrypt.decrypt(result, key);
+
+        System.out.println(s);
 
         assertEquals(result, decrypt.decrypt(s, key));
     }
