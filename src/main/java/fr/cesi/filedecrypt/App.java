@@ -1,6 +1,6 @@
 package fr.cesi.filedecrypt;
 
-import fr.cesi.filedecrypt.view.frm_auth;
+import fr.cesi.filedecrypt.view.*;
 
 /**
  * Hello world!
@@ -10,6 +10,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        frm_auth fenetre = new frm_auth();
+        frm_fichier fenetre = new frm_fichier();
     }
 }
