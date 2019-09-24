@@ -17,8 +17,8 @@ public class App {
     public static void main( String[] args ) {
         IController controller = new Controller(null, null);
         controller.start();
-      
-        frm_fichier fenetre = new frm_fichier();
+
+        FileFrame fenetre = new FileFrame();
     }
 
 }
