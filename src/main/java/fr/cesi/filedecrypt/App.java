@@ -2,8 +2,8 @@ package fr.cesi.filedecrypt;
 
 import fr.cesi.filedecrypt.controller.Authenticator;
 import fr.cesi.filedecrypt.interfaces.IView;
+import fr.cesi.filedecrypt.model.Decrypt;
 import fr.cesi.filedecrypt.view.*;
-import fr.cesi.filedecrypt.controller.Controller;
 import fr.cesi.filedecrypt.interfaces.IController;
 
 /**
@@ -19,8 +19,6 @@ public class App {
     public static void main( String[] args ) {
         IController authenticator = new Authenticator();
         IView frame = new AuthFrame(authenticator);
-        Controller controller = new Controller(null, frame);
-        controller.start();
     }
 
 }
