@@ -1,6 +1,8 @@
 package fr.cesi.filedecrypt.controller;
 
-public class Authenticator {
+import fr.cesi.filedecrypt.interfaces.IController;
+
+public class Authenticator implements IController {
 
     public Authenticator() {}
 

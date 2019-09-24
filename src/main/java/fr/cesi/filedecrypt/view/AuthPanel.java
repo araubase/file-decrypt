@@ -13,17 +13,15 @@ public class AuthPanel extends JPanel {
     private JTextField textField;
     private JPasswordField passwordField;
     private JButton button;
+    private AuthFrame frame;
 
-    public AuthPanel() {
-        textField = new JTextField(20);
-        passwordField = new JPasswordField(20);
-        button = new JButton("Connexion");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO: Vérification des informations de connexion
-            }
-        });
+    public AuthPanel(final AuthFrame frame) {
+        this.frame = frame;
+
+        this.textField = new JTextField(20);
+        this.passwordField = new JPasswordField(20);
+        this.button = new JButton("Connexion");
+        this.button.addActionListener(new MouseClickAction(this));
     }
 
     public JPanel buildContentPanel() {
@@ -41,4 +39,15 @@ public class AuthPanel extends JPanel {
         this.jp = jp;
     }
 
+    public AuthFrame getFrame() {
+        return frame;
+    }
+
+    public JTextField getTextField() {
+        return textField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
 }

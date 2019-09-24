@@ -30,7 +30,6 @@ public class Controller implements IController {
         return this.view;
     }
 
-    @Override
     public boolean start() {
 
         return true;

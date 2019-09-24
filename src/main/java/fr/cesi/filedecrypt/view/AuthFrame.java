@@ -1,5 +1,7 @@
 package fr.cesi.filedecrypt.view;
 
+import fr.cesi.filedecrypt.controller.Authenticator;
+import fr.cesi.filedecrypt.interfaces.IController;
 import fr.cesi.filedecrypt.interfaces.IView;
 
 import javax.swing.*;
@@ -8,10 +10,12 @@ import java.awt.*;
 public class AuthFrame extends JFrame implements IView {
 
     private AuthPanel authPanel;
+    private IController controller;
 
-    public AuthFrame() {
+    public AuthFrame(IController controller) {
         super();
-        authPanel = new AuthPanel();
+        this.controller = controller;
+        authPanel = new AuthPanel(this);
         this.buildFrame();
     }
 
@@ -34,4 +38,7 @@ public class AuthFrame extends JFrame implements IView {
         this.authPanel = authPanel;
     }
 
+    public Authenticator getController() {
+        return (Authenticator) controller;
+    }
 }
