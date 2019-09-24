@@ -32,6 +32,7 @@ public class Controller implements IController {
 
     @Override
     public boolean start() {
+
         return true;
     }
 }
