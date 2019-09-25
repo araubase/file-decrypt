@@ -40,7 +40,7 @@ public class Decryptor implements IController {
                         String fullKey = knownKey + dynamicPart;
                         String result = decrypt.decrypt(encryptedData, fullKey);
 
-                        System.out.println(encryptedData + " - " + fullKey + " - " + result + " - " + decrypt.decrypt(result, fullKey));
+                        System.out.println(encryptedData + " - " + fullKey + " - " + result);
 
                         MapDictionnaire map = new MapDictionnaire(result.split(" ")[0]);
                         String rqt = map.selectWord();
