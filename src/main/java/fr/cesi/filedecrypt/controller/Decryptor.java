@@ -1,7 +1,7 @@
 package fr.cesi.filedecrypt.controller;
 
 import fr.cesi.filedecrypt.interfaces.IController;
-import fr.cesi.filedecrypt.model.DAO;
+import fr.cesi.filedecrypt.model.CAD;
 import fr.cesi.filedecrypt.model.Decrypt;
 import fr.cesi.filedecrypt.model.Files;
 import fr.cesi.filedecrypt.model.MapDictionnaire;
@@ -9,7 +9,6 @@ import fr.cesi.filedecrypt.model.MapDictionnaire;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.regex.Pattern;
 
 public class Decryptor implements IController {
 
@@ -27,9 +26,9 @@ public class Decryptor implements IController {
 
         Decrypt decrypt = new Decrypt();
         String alphabet[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"};
-        DAO dao = new DAO();
+        CAD cad = new CAD();
 
-        String knownKey = "aaaaaaaa";
+        String knownKey = "aaaabbbb";
         String dynamicPart = "";
         for (int i = 0; i < alphabet.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
@@ -42,28 +41,29 @@ public class Decryptor implements IController {
 
                         System.out.println(encryptedData + " - " + fullKey + " - " + result);
 
-                        MapDictionnaire map = new MapDictionnaire(result.split(" ")[0]);
-                        String rqt = map.selectWord();
-                        ResultSet rs = dao.getRows(rqt);
+                        if (result.split(" ").length > 2) {
+                            MapDictionnaire map = new MapDictionnaire(result.split(" ")[2]);
+                            String rqt = map.selectWord();
+                            ResultSet rs = cad.getRows(rqt);
 
-                        boolean decrypted = false;
-                        try {
-                            while (rs.next()) {
-                                decrypted = true;
-                            }
-                        } catch (SQLException ex) {
-                            System.out.println(ex.getMessage());
-                        }
-
-                        if (decrypted) {
+                            boolean decrypted = false;
                             try {
-                                files.ecrireFichier(destination + "\\decrypted.txt", result);
-                            } catch (IOException ex) {
+                                while (rs.next()) {
+                                    decrypted = true;
+                                }
+                            } catch (SQLException ex) {
                                 System.out.println(ex.getMessage());
                             }
-                            System.exit(1);
-                        }
 
+                            if (decrypted) {
+                                try {
+                                    files.ecrireFichier(destination + "\\decrypted.txt", result);
+                                } catch (IOException ex) {
+                                    System.out.println(ex.getMessage());
+                                }
+                                System.exit(1);
+                            }
+                        }
                     }
                 }
             }

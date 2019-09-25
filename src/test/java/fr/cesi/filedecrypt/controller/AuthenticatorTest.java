@@ -9,6 +9,6 @@ public class AuthenticatorTest {
     @Test
     public void login() {
         Authenticator auth = new Authenticator();
-        assertEquals(true, auth.login("", ""));
+        assertEquals(true, auth.login("julien.griffoul@viacesi.fr", "admin"));
     }
 }

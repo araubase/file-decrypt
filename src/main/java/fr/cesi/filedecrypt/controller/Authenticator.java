@@ -1,7 +1,7 @@
 package fr.cesi.filedecrypt.controller;
 
 import fr.cesi.filedecrypt.interfaces.IController;
-import fr.cesi.filedecrypt.model.DAO;
+import fr.cesi.filedecrypt.model.CAD;
 import fr.cesi.filedecrypt.model.MapPersonne;
 import fr.cesi.filedecrypt.view.FileFrame;
 
@@ -16,8 +16,8 @@ public class Authenticator implements IController {
         MapPersonne map = new MapPersonne(username, password);
         String rqt = map.selectIDByLoginAndPassword();
 
-        DAO dao = new DAO();
-        ResultSet result = dao.getRows(rqt);
+        CAD cad = new CAD();
+        ResultSet result = cad.getRows(rqt);
 
         boolean authenticated = false;
         try {

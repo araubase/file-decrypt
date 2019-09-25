@@ -30,4 +30,7 @@ public class OpenFileAction extends AbstractAction {
         }
     }
 
+    public FilePanel getPanel() {
+        return panel;
+    }
 }

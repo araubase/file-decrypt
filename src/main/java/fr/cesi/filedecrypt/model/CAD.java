@@ -2,7 +2,7 @@ package fr.cesi.filedecrypt.model;
 
 import java.sql.*;
 
-public class DAO {
+public class CAD {
 
     private String url = "jdbc:mysql://localhost:3306/FileDecrypt?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
     private String login = "root";
@@ -12,7 +12,7 @@ public class DAO {
     private Statement statement;
     private ResultSet resultSet;
 
-    public DAO() {
+    public CAD() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -40,11 +40,14 @@ public class DAO {
         return result;
     }
 
-    public void actionRows(String rqt) {
+    public boolean actionRows(String rqt) {
         try {
-            statement.executeUpdate(rqt);
+            this.statement = connection.createStatement();
+            this.statement.executeUpdate(rqt);
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return false;
         }
     }
 

@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 public class AuthPanel extends JPanel {
 
-    private JPanel jp = new JPanel();
+    private JPanel jp;
 
     private JTextField textField;
     private JPasswordField passwordField;
@@ -17,6 +17,7 @@ public class AuthPanel extends JPanel {
 
     public AuthPanel(final AuthFrame frame) {
         this.frame = frame;
+        this.jp = new JPanel();
 
         this.textField = new JTextField(20);
         this.passwordField = new JPasswordField(20);
@@ -49,5 +50,13 @@ public class AuthPanel extends JPanel {
 
     public JPasswordField getPasswordField() {
         return passwordField;
+    }
+
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
+    }
+
+    public void setPasswordField(JPasswordField passwordField) {
+        this.passwordField = passwordField;
     }
 }
