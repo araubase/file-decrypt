@@ -25,10 +25,10 @@ public class Decryptor implements IController {
         }
 
         Decrypt decrypt = new Decrypt();
-        String alphabet[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"};
+        String alphabet[] = {"e", "g", "j", "t"};
         CAD cad = new CAD();
 
-        String knownKey = "aaaabbbb";
+        String knownKey = "awqpmndf";
         String dynamicPart = "";
         for (int i = 0; i < alphabet.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
@@ -39,17 +39,29 @@ public class Decryptor implements IController {
                         String fullKey = knownKey + dynamicPart;
                         String result = decrypt.decrypt(encryptedData, fullKey);
 
-                        System.out.println(encryptedData + " - " + fullKey + " - " + result);
+                        System.out.println(fullKey + " - " + result);
 
                         if (result.split(" ").length > 2) {
-                            MapDictionnaire map = new MapDictionnaire(result.split(" ")[2]);
+                            MapDictionnaire map = new MapDictionnaire(result.split(" ")[0].replace(",", ""));
                             String rqt = map.selectWord();
                             ResultSet rs = cad.getRows(rqt);
 
                             boolean decrypted = false;
                             try {
                                 while (rs.next()) {
-                                    decrypted = true;
+                                    MapDictionnaire map2 = new MapDictionnaire(result.split(" ")[1].replace(",", ""));
+                                    String rqt2 = map2.selectWord();
+                                    ResultSet rs2 = cad.getRows(rqt2);
+
+                                    while (rs2.next()) {
+                                        MapDictionnaire map3 = new MapDictionnaire(result.split(" ")[2].replace(",", ""));
+                                        String rqt3 = map3.selectWord();
+                                        ResultSet rs3 = cad.getRows(rqt3);
+
+                                        while (rs3.next()) {
+                                            decrypted = true;
+                                        }
+                                    }
                                 }
                             } catch (SQLException ex) {
                                 System.out.println(ex.getMessage());

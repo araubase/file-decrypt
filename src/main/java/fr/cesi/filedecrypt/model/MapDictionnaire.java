@@ -10,7 +10,7 @@ public class MapDictionnaire {
     }
 
     public String selectWord() {
-        return "SELECT * FROM Dictionnaire WHERE mot LIKE '" + this.mot + "'";
+        return "SELECT * FROM Dictionnaire WHERE mot LIKE '" + this.mot.replaceAll("['\"\\\\]", "\\\\$0") + "'";
     }
 
 }

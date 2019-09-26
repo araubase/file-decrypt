@@ -3,6 +3,7 @@ package fr.cesi.filedecrypt;
 import fr.cesi.filedecrypt.controller.Authenticator;
 import fr.cesi.filedecrypt.interfaces.IView;
 import fr.cesi.filedecrypt.model.Decrypt;
+import fr.cesi.filedecrypt.model.Files;
 import fr.cesi.filedecrypt.view.*;
 import fr.cesi.filedecrypt.interfaces.IController;
 
