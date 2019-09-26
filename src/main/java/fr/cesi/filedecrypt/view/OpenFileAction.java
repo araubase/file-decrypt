@@ -5,26 +5,49 @@ import java.io.File;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 
+/**
+ * Action called when file chooser is submitted
+ */
 public class OpenFileAction extends AbstractAction {
 
-    public OpenFileAction(String text) {
+    private int mode;
+    private FilePanel panel;
+
+    /**
+     * Constructor
+     * @param text
+     * @param mode
+     * @param panel
+     */
+    public OpenFileAction(String text, int mode, FilePanel panel) {
         super(text);
+        this.panel = panel;
+        this.mode = mode;
     }
 
+    /**
+     * Overrided method called when the action is performed
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
-        /*
-         * Research the file which must be decrypt.
-         */
-
-        // Using this process to invoke the contructor,
-        // JFileChooser points to user's default directory
         JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(this.mode);
 
-        // Open the save dialog
         j.showSaveDialog(null);
         File f = j.getSelectedFile();
 
-        System.out.println(f.getAbsolutePath());
+        if (mode == JFileChooser.FILES_ONLY) {
+            panel.setSource(f.getAbsolutePath());
+        } else if (mode == JFileChooser.DIRECTORIES_ONLY) {
+            panel.setDestination(f.getAbsolutePath());
+        }
     }
 
+    /**
+     * Getter method
+     * @return panel instance
+     */
+    public FilePanel getPanel() {
+        return panel;
+    }
 }

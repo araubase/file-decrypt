@@ -6,12 +6,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Model class that will perform file writing and reading
+ */
 public class Files {
-	
-	public Files() {
-		
-	}
 
+    /**
+     * Constructor
+     */
+	public Files() {}
+
+    /**
+     * Read a file
+     * @param path
+     * @return data
+     * @throws Exception
+     */
 	public String lireFichier(String path) throws Exception {
         InputStream stream;
         stream = new FileInputStream(path);
@@ -27,7 +37,13 @@ public class Files {
         return reponse.toString();
         
     }
-    
+
+    /**
+     * Write a file
+     * @param path
+     * @param texte
+     * @throws IOException
+     */
     public void ecrireFichier(String path, String texte) throws IOException {
         OutputStream stream;
         

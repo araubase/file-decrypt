@@ -8,5 +8,8 @@ public class DecryptorTest {
 
     @Test
     public void decrypt() {
+        Decryptor decryptor = new Decryptor();
+
+        assertEquals(false, decryptor.decrypt("", ""));
     }
 }
