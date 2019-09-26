@@ -2,6 +2,9 @@ package fr.cesi.filedecrypt.model;
 
 import java.sql.*;
 
+/**
+ * Couche d'accès au données
+ */
 public class CAD {
 
     private String url = "jdbc:mysql://localhost:3306/FileDecrypt?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
@@ -12,6 +15,9 @@ public class CAD {
     private Statement statement;
     private ResultSet resultSet;
 
+    /**
+     * Constructor
+     */
     public CAD() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,6 +32,11 @@ public class CAD {
         }
     }
 
+    /**
+     * Perform SELECT SQL request
+     * @param rqt
+     * @return data
+     */
     public ResultSet getRows(String rqt) {
         ResultSet result = null;
         try {
@@ -40,6 +51,11 @@ public class CAD {
         return result;
     }
 
+    /**
+     * Perform TABLE UPDATE SQL request
+     * @param rqt
+     * @return success state
+     */
     public boolean actionRows(String rqt) {
         try {
             this.statement = connection.createStatement();

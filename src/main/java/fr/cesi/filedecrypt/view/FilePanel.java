@@ -2,6 +2,9 @@ package fr.cesi.filedecrypt.view;
 
 import javax.swing.*;
 
+/**
+ * File submission panel class
+ */
 public class FilePanel extends JPanel{
 
     private static final long serialVersionUID = 1L;
@@ -18,6 +21,10 @@ public class FilePanel extends JPanel{
     private String source;
     private String destination;
 
+    /**
+     * Constructor
+     * @param frame
+     */
     public FilePanel(FileFrame frame) {
         this.frame = frame;
         fileText = new JLabel("Aucun fichier.");
@@ -27,6 +34,10 @@ public class FilePanel extends JPanel{
         submitButton.addActionListener(new DecryptSubmitAction(this));
     }
 
+    /**
+     * Build the panel content
+     * @return
+     */
     public JPanel buildContentPanel() {
         this.getJP().add(fileText);
         this.getJP().add(chooseButton);
@@ -36,30 +47,58 @@ public class FilePanel extends JPanel{
         return this.getJP();
     }
 
+    /**
+     * Getter method
+     * @return panel instance
+     */
     public JPanel getJP() {
         return jp;
     }
 
+    /**
+     * Setter method
+     * @param jp
+     */
     public void setJP(JPanel jp) {
         this.jp = jp;
     }
 
+    /**
+     * Getter method
+     * @return source path
+     */
     public String getSource() {
         return source;
     }
 
+    /**
+     * Getter method
+     * @return destination path
+     */
     public String getDestination() {
         return destination;
     }
 
+    /**
+     * Setter method
+     * @param source
+     */
     public void setSource(String source) {
         this.source = source;
     }
 
+    /**
+     * Setter method
+     * @param destination
+     */
     public void setDestination(String destination) {
         this.destination = destination;
     }
 
+    /**
+     * Getter method
+     * @return frame instance
+     */
     public FileFrame getFrame() {
         return frame;
     }

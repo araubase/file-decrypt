@@ -10,6 +10,9 @@ import java.util.*;
 
 import javax.swing.JFrame;
 
+/**
+ * File submission frame class
+ */
 public class FileFrame extends JFrame implements IView {
 
     private static final long serialVersionUID = 1L;
@@ -17,6 +20,10 @@ public class FileFrame extends JFrame implements IView {
     private FilePanel filePanel;
     private IController controller;
 
+    /**
+     * Constructor
+     * @param controller
+     */
     public FileFrame(IController controller) {
         super();
         this.controller = controller;
@@ -24,6 +31,9 @@ public class FileFrame extends JFrame implements IView {
         this.buildFrame();
     }
 
+    /**
+     * Build the frame
+     */
     private void buildFrame() {
         FlowLayout fl = new FlowLayout();
 
@@ -37,14 +47,26 @@ public class FileFrame extends JFrame implements IView {
         this.setVisible(true);
     }
 
+    /**
+     * Getter method
+     * @return panel instance
+     */
     public FilePanel getFilePanel() {
         return filePanel;
     }
 
+    /**
+     * Setter method
+     * @param filePanel
+     */
     public void setFilePanel(FilePanel filePanel) {
         this.filePanel = filePanel;
     }
 
+    /**
+     * Getter method
+     * @return controller instance
+     */
     public Decryptor getController() {
         return (Decryptor) controller;
     }

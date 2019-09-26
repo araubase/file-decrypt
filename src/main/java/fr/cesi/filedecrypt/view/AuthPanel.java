@@ -1,11 +1,10 @@
 package fr.cesi.filedecrypt.view;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
+/**
+ * Authentication panel class
+ */
 public class AuthPanel extends JPanel {
 
     private JPanel jp;
@@ -15,6 +14,10 @@ public class AuthPanel extends JPanel {
     private JButton button;
     private AuthFrame frame;
 
+    /**
+     * Constructor
+     * @param frame
+     */
     public AuthPanel(final AuthFrame frame) {
         this.frame = frame;
         this.jp = new JPanel();
@@ -25,6 +28,10 @@ public class AuthPanel extends JPanel {
         this.button.addActionListener(new MouseClickAction(this));
     }
 
+    /**
+     * Build the panel content
+     * @return built panel
+     */
     public JPanel buildContentPanel() {
         this.getJP().add(textField);
         this.getJP().add(passwordField);
@@ -32,30 +39,58 @@ public class AuthPanel extends JPanel {
         return this.getJP();
     }
 
+    /**
+     * Getter method
+     * @return panel instance
+     */
     public JPanel getJP() {
         return jp;
     }
 
+    /**
+     * Setter method
+     * @param jp
+     */
     public void setJP(JPanel jp) {
         this.jp = jp;
     }
 
+    /**
+     * Getter method
+     * @return frame instance
+     */
     public AuthFrame getFrame() {
         return frame;
     }
 
+    /**
+     * Getter method
+     * @return text field instance
+     */
     public JTextField getTextField() {
         return textField;
     }
 
+    /**
+     * Getter method
+     * @return password field instance
+     */
     public JPasswordField getPasswordField() {
         return passwordField;
     }
 
+    /**
+     * Setter method
+     * @param textField
+     */
     public void setTextField(JTextField textField) {
         this.textField = textField;
     }
 
+    /**
+     * Setter method
+     * @param passwordField
+     */
     public void setPasswordField(JPasswordField passwordField) {
         this.passwordField = passwordField;
     }

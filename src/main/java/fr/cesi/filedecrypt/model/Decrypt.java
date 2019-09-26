@@ -1,9 +1,21 @@
 package fr.cesi.filedecrypt.model;
 
+/**
+ * Model class that will perform decryption algorithm
+ */
 public class Decrypt {
 
+    /**
+     * Constructor
+     */
     public Decrypt() {}
 
+    /**
+     * Decrypt a string with key through XOR algorithm
+     * @param data
+     * @param key
+     * @return decryption result
+     */
     public String decrypt(String data, String key) {
         StringBuilder sb1;
         char c1, c2, c3;
